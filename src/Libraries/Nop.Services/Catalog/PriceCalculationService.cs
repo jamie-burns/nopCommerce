@@ -17,53 +17,21 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Price calculation service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(CatalogSettings),
+        typeof(CurrencySettings),
+        typeof(ICategoryService),
+        typeof(ICurrencyService),
+        typeof(ICustomerService),
+        typeof(ICustomerService),
+        typeof(IDiscountService),
+        typeof(IManufacturerService),
+        typeof(IProductAttributeParser),
+        typeof(IProductService),
+        typeof(IStaticCacheManager),
+        typeof(IStoreContext))]
     public partial class PriceCalculationService : IPriceCalculationService
     {
-        #region Fields
-
-        private readonly CatalogSettings _catalogSettings;
-        private readonly CurrencySettings _currencySettings;
-        private readonly ICategoryService _categoryService;
-        private readonly ICurrencyService _currencyService;
-        private readonly ICustomerService _customerService;
-        private readonly IDiscountService _discountService;
-        private readonly IManufacturerService _manufacturerService;
-        private readonly IProductAttributeParser _productAttributeParser;
-        private readonly IProductService _productService;
-        private readonly IStaticCacheManager _staticCacheManager;
-        private readonly IStoreContext _storeContext;
-
-        #endregion
-
-        #region Ctor
-
-        public PriceCalculationService(CatalogSettings catalogSettings,
-            CurrencySettings currencySettings,
-            ICategoryService categoryService,
-            ICurrencyService currencyService,
-            ICustomerService customerService,
-            IDiscountService discountService,
-            IManufacturerService manufacturerService,
-            IProductAttributeParser productAttributeParser,
-            IProductService productService,
-            IStaticCacheManager staticCacheManager,
-            IStoreContext storeContext)
-        {
-            _catalogSettings = catalogSettings;
-            _currencySettings = currencySettings;
-            _categoryService = categoryService;
-            _currencyService = currencyService;
-            _customerService = customerService;
-            _discountService = discountService;
-            _manufacturerService = manufacturerService;
-            _productAttributeParser = productAttributeParser;
-            _productService = productService;
-            _staticCacheManager = staticCacheManager;
-            _storeContext = storeContext;
-        }
-
-        #endregion
-        
         #region Utilities
 
         /// <summary>

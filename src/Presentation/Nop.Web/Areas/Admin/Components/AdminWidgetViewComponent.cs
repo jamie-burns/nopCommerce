@@ -9,23 +9,9 @@ namespace Nop.Web.Areas.Admin.Components
     /// <summary>
     /// Represents a view component that displays an admin widgets
     /// </summary>
-    public class AdminWidgetViewComponent : NopViewComponent
+    [SlowFox.InjectDependencies(typeof(IWidgetModelFactory))]
+    public partial class AdminWidgetViewComponent : NopViewComponent
     {
-        #region Fields
-
-        private readonly IWidgetModelFactory _widgetModelFactory;
-
-        #endregion
-
-        #region Ctor
-
-        public AdminWidgetViewComponent(IWidgetModelFactory widgetModelFactory)
-        {
-            _widgetModelFactory = widgetModelFactory;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

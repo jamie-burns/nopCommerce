@@ -18,59 +18,22 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Manufacturer service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(CatalogSettings),
+        typeof(IAclService),
+        typeof(ICategoryService),
+        typeof(ICustomerService),
+        typeof(IRepository<DiscountManufacturerMapping>),
+        typeof(IRepository<Manufacturer>),
+        typeof(IRepository<Product>),
+        typeof(IRepository<ProductManufacturer>),
+        typeof(IRepository<ProductCategory>),
+        typeof(IStaticCacheManager),
+        typeof(IStoreContext),
+        typeof(IStoreMappingService),
+        typeof(IWorkContext))]
     public partial class ManufacturerService : IManufacturerService
     {
-        #region Fields
-
-        private readonly CatalogSettings _catalogSettings;
-        private readonly IAclService _aclService;
-        private readonly ICategoryService _categoryService;
-        private readonly ICustomerService _customerService;
-        private readonly IRepository<DiscountManufacturerMapping> _discountManufacturerMappingRepository;
-        private readonly IRepository<Manufacturer> _manufacturerRepository;
-        private readonly IRepository<Product> _productRepository;
-        private readonly IRepository<ProductManufacturer> _productManufacturerRepository;
-        private readonly IRepository<ProductCategory> _productCategoryRepository;
-        private readonly IStaticCacheManager _staticCacheManager;
-        private readonly IStoreContext _storeContext;
-        private readonly IStoreMappingService _storeMappingService;
-        private readonly IWorkContext _workContext;
-
-        #endregion
-
-        #region Ctor
-
-        public ManufacturerService(CatalogSettings catalogSettings,
-            IAclService aclService,
-            ICategoryService categoryService,
-            ICustomerService customerService,
-            IRepository<DiscountManufacturerMapping> discountManufacturerMappingRepository,
-            IRepository<Manufacturer> manufacturerRepository,
-            IRepository<Product> productRepository,
-            IRepository<ProductManufacturer> productManufacturerRepository,
-            IRepository<ProductCategory> productCategoryRepository,
-            IStaticCacheManager staticCacheManager,
-            IStoreContext storeContext,
-            IStoreMappingService storeMappingService,
-            IWorkContext workContext)
-        {
-            _catalogSettings = catalogSettings;
-            _aclService = aclService;
-            _categoryService = categoryService;
-            _customerService = customerService;
-            _discountManufacturerMappingRepository = discountManufacturerMappingRepository;
-            _manufacturerRepository = manufacturerRepository;
-            _productRepository = productRepository;
-            _productManufacturerRepository = productManufacturerRepository;
-            _productCategoryRepository = productCategoryRepository;
-            _staticCacheManager = staticCacheManager;
-            _storeContext = storeContext;
-            _storeMappingService = storeMappingService;
-            _workContext = workContext;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

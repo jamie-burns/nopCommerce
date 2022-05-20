@@ -12,32 +12,13 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Back in stock subscription service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(IRepository<BackInStockSubscription>),
+        typeof(IRepository<Customer>), 
+        typeof(IRepository<Product>), 
+        typeof(IWorkflowMessageService))]
     public partial class BackInStockSubscriptionService : IBackInStockSubscriptionService
     {
-        #region Fields
-
-        private readonly IRepository<BackInStockSubscription> _backInStockSubscriptionRepository;
-        private readonly IRepository<Customer> _customerRepository;
-        private readonly IRepository<Product> _productRepository;
-        private readonly IWorkflowMessageService _workflowMessageService;
-
-        #endregion
-
-        #region Ctor
-
-        public BackInStockSubscriptionService(IRepository<BackInStockSubscription> backInStockSubscriptionRepository,
-            IRepository<Customer> customerRepository,
-            IRepository<Product> productRepository,
-            IWorkflowMessageService workflowMessageService)
-        {
-            _backInStockSubscriptionRepository = backInStockSubscriptionRepository;
-            _customerRepository = customerRepository;
-            _productRepository = productRepository;
-            _workflowMessageService = workflowMessageService;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

@@ -6,23 +6,9 @@ namespace Nop.Services.Caching
     /// <summary>
     /// Clear cache scheduled task implementation
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(IStaticCacheManager))]
     public partial class ClearCacheTask : IScheduleTask
     {
-        #region Fields
-
-        private readonly IStaticCacheManager _staticCacheManager;
-
-        #endregion
-
-        #region Ctor
-
-        public ClearCacheTask(IStaticCacheManager staticCacheManager)
-        {
-            _staticCacheManager = staticCacheManager;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

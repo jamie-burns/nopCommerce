@@ -8,23 +8,9 @@ namespace Nop.Web.Areas.Admin.Components
     /// <summary>
     /// Represents a view component that displays the admin language selector
     /// </summary>
-    public class AdminLanguageSelectorViewComponent : NopViewComponent
+    [SlowFox.InjectDependencies(typeof(ICommonModelFactory))]
+    public partial class AdminLanguageSelectorViewComponent : NopViewComponent
     {
-        #region Fields
-
-        private readonly ICommonModelFactory _commonModelFactory;
-
-        #endregion
-
-        #region Ctor
-
-        public AdminLanguageSelectorViewComponent(ICommonModelFactory commonModelFactory)
-        {
-            _commonModelFactory = commonModelFactory;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

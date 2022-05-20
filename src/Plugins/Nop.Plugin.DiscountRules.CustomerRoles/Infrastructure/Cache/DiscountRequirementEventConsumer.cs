@@ -9,23 +9,9 @@ namespace Nop.Plugin.DiscountRules.CustomerRoles.Infrastructure.Cache
     /// <summary>
     /// Discount requirement rule event consumer (used for removing unused settings)
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(ISettingService))]
     public partial class DiscountRequirementEventConsumer : IConsumer<EntityDeletedEvent<DiscountRequirement>>
     {
-        #region Fields
-        
-        private readonly ISettingService _settingService;
-
-        #endregion
-
-        #region Ctor
-
-        public DiscountRequirementEventConsumer(ISettingService settingService)
-        {
-            _settingService = settingService;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

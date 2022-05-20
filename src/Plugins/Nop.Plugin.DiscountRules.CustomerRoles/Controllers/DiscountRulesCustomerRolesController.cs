@@ -21,35 +21,14 @@ namespace Nop.Plugin.DiscountRules.CustomerRoles.Controllers
     [AuthorizeAdmin]
     [Area(AreaNames.Admin)]
     [AutoValidateAntiforgeryToken]
-    public class DiscountRulesCustomerRolesController : BasePluginController
+    [SlowFox.InjectDependencies(
+        typeof(ICustomerService),
+        typeof(IDiscountService),
+        typeof(ILocalizationService),
+        typeof(IPermissionService),
+        typeof(ISettingService))]
+    public partial class DiscountRulesCustomerRolesController : BasePluginController
     {
-        #region Fields
-
-        private readonly ICustomerService _customerService;
-        private readonly IDiscountService _discountService;
-        private readonly ILocalizationService _localizationService;
-        private readonly IPermissionService _permissionService;
-        private readonly ISettingService _settingService;
-
-        #endregion
-
-        #region Ctor
-
-        public DiscountRulesCustomerRolesController(ICustomerService customerService,
-            IDiscountService discountService,
-            ILocalizationService localizationService,
-            IPermissionService permissionService,
-            ISettingService settingService)
-        {
-            _customerService = customerService;
-            _discountService = discountService;
-            _localizationService = localizationService;
-            _permissionService = permissionService;
-            _settingService = settingService;
-        }
-
-        #endregion
-
         #region Methods
 
         public async Task<IActionResult> Configure(int discountId, int? discountRequirementId)

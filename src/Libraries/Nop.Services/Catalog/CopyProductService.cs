@@ -15,65 +15,24 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Copy Product service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(ICategoryService),
+        typeof(IDownloadService),
+        typeof(ILanguageService),
+        typeof(ILocalizationService),
+        typeof(ILocalizedEntityService),
+        typeof(IManufacturerService),
+        typeof(IPictureService),
+        typeof(IProductAttributeParser),
+        typeof(IProductAttributeService),
+        typeof(IProductService),
+        typeof(IProductTagService),
+        typeof(ISpecificationAttributeService),
+        typeof(IStoreMappingService),
+        typeof(IUrlRecordService),
+        typeof(IVideoService))]
     public partial class CopyProductService : ICopyProductService
     {
-        #region Fields
-
-        private readonly ICategoryService _categoryService;
-        private readonly IDownloadService _downloadService;
-        private readonly ILanguageService _languageService;
-        private readonly ILocalizationService _localizationService;
-        private readonly ILocalizedEntityService _localizedEntityService;
-        private readonly IManufacturerService _manufacturerService;
-        private readonly IPictureService _pictureService;
-        private readonly IProductAttributeParser _productAttributeParser;
-        private readonly IProductAttributeService _productAttributeService;
-        private readonly IProductService _productService;
-        private readonly IProductTagService _productTagService;
-        private readonly ISpecificationAttributeService _specificationAttributeService;
-        private readonly IStoreMappingService _storeMappingService;
-        private readonly IUrlRecordService _urlRecordService;
-        private readonly IVideoService _videoService;
-
-        #endregion
-
-        #region Ctor
-
-        public CopyProductService(ICategoryService categoryService,
-            IDownloadService downloadService,
-            ILanguageService languageService,
-            ILocalizationService localizationService,
-            ILocalizedEntityService localizedEntityService,
-            IManufacturerService manufacturerService,
-            IPictureService pictureService,
-            IProductAttributeParser productAttributeParser,
-            IProductAttributeService productAttributeService,
-            IProductService productService,
-            IProductTagService productTagService,
-            ISpecificationAttributeService specificationAttributeService,
-            IStoreMappingService storeMappingService,
-            IUrlRecordService urlRecordService,
-            IVideoService videoService)
-        {
-            _categoryService = categoryService;
-            _downloadService = downloadService;
-            _languageService = languageService;
-            _localizationService = localizationService;
-            _localizedEntityService = localizedEntityService;
-            _manufacturerService = manufacturerService;
-            _pictureService = pictureService;
-            _productAttributeParser = productAttributeParser;
-            _productAttributeService = productAttributeService;
-            _productService = productService;
-            _productTagService = productTagService;
-            _specificationAttributeService = specificationAttributeService;
-            _storeMappingService = storeMappingService;
-            _urlRecordService = urlRecordService;
-            _videoService = videoService;
-        }
-
-        #endregion
-
         #region Utilities
 
         /// <summary>

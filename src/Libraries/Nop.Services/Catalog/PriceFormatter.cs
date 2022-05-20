@@ -13,41 +13,16 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Price formatter
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(CurrencySettings),
+        typeof(ICurrencyService),
+        typeof(ILocalizationService),
+        typeof(IMeasureService),
+        typeof(IPriceCalculationService),
+        typeof(IWorkContext),
+        typeof(TaxSettings))]
     public partial class PriceFormatter : IPriceFormatter
     {
-        #region Fields
-
-        private readonly CurrencySettings _currencySettings;
-        private readonly ICurrencyService _currencyService;
-        private readonly ILocalizationService _localizationService;
-        private readonly IMeasureService _measureService;
-        private readonly IPriceCalculationService _priceCalculationService;
-        private readonly IWorkContext _workContext;
-        private readonly TaxSettings _taxSettings;
-
-        #endregion
-
-        #region Ctor
-
-        public PriceFormatter(CurrencySettings currencySettings,
-            ICurrencyService currencyService,
-            ILocalizationService localizationService,
-            IMeasureService measureService,
-            IPriceCalculationService priceCalculationService,
-            IWorkContext workContext,
-            TaxSettings taxSettings)
-        {
-            _currencySettings = currencySettings;
-            _currencyService = currencyService;
-            _localizationService = localizationService;
-            _measureService = measureService;
-            _priceCalculationService = priceCalculationService;
-            _workContext = workContext;
-            _taxSettings = taxSettings;
-        }
-
-        #endregion
-
         #region Utilities
 
         /// <summary>

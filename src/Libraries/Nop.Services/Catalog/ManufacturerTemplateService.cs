@@ -9,23 +9,9 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Manufacturer template service
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(IRepository<ManufacturerTemplate>))]
     public partial class ManufacturerTemplateService : IManufacturerTemplateService
     {
-        #region Fields
-
-        private readonly IRepository<ManufacturerTemplate> _manufacturerTemplateRepository;
-
-        #endregion
-
-        #region Ctor
-
-        public ManufacturerTemplateService(IRepository<ManufacturerTemplate> manufacturerTemplateRepository)
-        {
-            _manufacturerTemplateRepository = manufacturerTemplateRepository;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

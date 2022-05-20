@@ -12,28 +12,12 @@ namespace Nop.Services.Authentication
     /// <summary>
     /// Represents service using cookie middleware for the authentication
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(CustomerSettings), typeof(ICustomerService), typeof(IHttpContextAccessor))]
     public partial class CookieAuthenticationService : IAuthenticationService
     {
         #region Fields
 
-        private readonly CustomerSettings _customerSettings;
-        private readonly ICustomerService _customerService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
         private Customer _cachedCustomer;
-
-        #endregion
-
-        #region Ctor
-
-        public CookieAuthenticationService(CustomerSettings customerSettings,
-            ICustomerService customerService,
-            IHttpContextAccessor httpContextAccessor)
-        {
-            _customerSettings = customerSettings;
-            _customerService = customerService;
-            _httpContextAccessor = httpContextAccessor;
-        }
 
         #endregion
 

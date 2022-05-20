@@ -13,33 +13,9 @@ namespace Nop.Services.Blogs
     /// <summary>
     /// Blog service
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(IRepository<BlogComment>), typeof(IRepository<BlogPost>), typeof(IStaticCacheManager), typeof(IStoreMappingService))]
     public partial class BlogService : IBlogService
     {
-        #region Fields
-
-        private readonly IRepository<BlogComment> _blogCommentRepository;
-        private readonly IRepository<BlogPost> _blogPostRepository;
-        private readonly IStaticCacheManager _staticCacheManager;
-        private readonly IStoreMappingService _storeMappingService;
-
-        #endregion
-
-        #region Ctor
-
-        public BlogService(
-            IRepository<BlogComment> blogCommentRepository,
-            IRepository<BlogPost> blogPostRepository,
-            IStaticCacheManager staticCacheManager,
-            IStoreMappingService storeMappingService)
-        {
-            _blogCommentRepository = blogCommentRepository;
-            _blogPostRepository = blogPostRepository;
-            _staticCacheManager = staticCacheManager;
-            _storeMappingService = storeMappingService;
-        }
-
-        #endregion
-
         #region Methods
 
         #region Blog posts

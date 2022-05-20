@@ -13,35 +13,14 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Compare products service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(CatalogSettings),
+        typeof(CookieSettings),
+        typeof(IHttpContextAccessor),
+        typeof(IProductService),
+        typeof(IWebHelper))]
     public partial class CompareProductsService : ICompareProductsService
     {
-        #region Fields
-
-        private readonly CatalogSettings _catalogSettings;
-        private readonly CookieSettings _cookieSettings;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IProductService _productService;
-        private readonly IWebHelper _webHelper;
-
-        #endregion
-
-        #region Ctor
-
-        public CompareProductsService(CatalogSettings catalogSettings,
-            CookieSettings cookieSettings,
-            IHttpContextAccessor httpContextAccessor,
-            IProductService productService,
-            IWebHelper webHelper)
-        {
-            _catalogSettings = catalogSettings;
-            _cookieSettings = cookieSettings;
-            _httpContextAccessor = httpContextAccessor;
-            _productService = productService;
-            _webHelper = webHelper;
-        }
-
-        #endregion
-
         #region Utilities
 
         /// <summary>

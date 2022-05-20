@@ -7,21 +7,12 @@ using Nop.Web.Framework.Components;
 
 namespace Nop.Web.Areas.Admin.Components
 {
-    public class AclDisabledWarningViewComponent : NopViewComponent
+    [SlowFox.InjectDependencies(
+        typeof(CatalogSettings),
+        typeof(ISettingService),
+        typeof(IStoreService))]
+    public partial class AclDisabledWarningViewComponent : NopViewComponent
     {
-        private readonly CatalogSettings _catalogSettings;
-        private readonly ISettingService _settingService;
-        private readonly IStoreService _storeService;
-
-        public AclDisabledWarningViewComponent(CatalogSettings catalogSettings,
-            ISettingService settingService,
-            IStoreService storeService)
-        {
-            _catalogSettings = catalogSettings;
-            _settingService = settingService;
-            _storeService = storeService;
-        }
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
             //action displaying notification (warning) to a store owner that "ACL rules" feature is ignored

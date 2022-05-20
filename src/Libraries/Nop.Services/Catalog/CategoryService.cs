@@ -19,54 +19,20 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Category service
     /// </summary>
+    [SlowFox.InjectDependencies(
+        typeof(IAclService),
+        typeof(ICustomerService),
+        typeof(ILocalizationService),
+        typeof(IRepository<Category>),
+        typeof(IRepository<DiscountCategoryMapping>),
+        typeof(IRepository<Product>),
+        typeof(IRepository<ProductCategory>),
+        typeof(IStaticCacheManager),
+        typeof(IStoreContext),
+        typeof(IStoreMappingService),
+        typeof(IWorkContext))]
     public partial class CategoryService : ICategoryService
     {
-        #region Fields
-
-        private readonly IAclService _aclService;
-        private readonly ICustomerService _customerService;
-        private readonly ILocalizationService _localizationService;
-        private readonly IRepository<Category> _categoryRepository;
-        private readonly IRepository<DiscountCategoryMapping> _discountCategoryMappingRepository;
-        private readonly IRepository<Product> _productRepository;
-        private readonly IRepository<ProductCategory> _productCategoryRepository;
-        private readonly IStaticCacheManager _staticCacheManager;
-        private readonly IStoreContext _storeContext;
-        private readonly IStoreMappingService _storeMappingService;
-        private readonly IWorkContext _workContext;
-
-        #endregion
-
-        #region Ctor
-
-        public CategoryService(
-            IAclService aclService,
-            ICustomerService customerService,
-            ILocalizationService localizationService,
-            IRepository<Category> categoryRepository,
-            IRepository<DiscountCategoryMapping> discountCategoryMappingRepository,
-            IRepository<Product> productRepository,
-            IRepository<ProductCategory> productCategoryRepository,
-            IStaticCacheManager staticCacheManager,
-            IStoreContext storeContext,
-            IStoreMappingService storeMappingService,
-            IWorkContext workContext)
-        {
-            _aclService = aclService;
-            _customerService = customerService;
-            _localizationService = localizationService;
-            _categoryRepository = categoryRepository;
-            _discountCategoryMappingRepository = discountCategoryMappingRepository;
-            _productRepository = productRepository;
-            _productCategoryRepository = productCategoryRepository;
-            _staticCacheManager = staticCacheManager;
-            _storeContext = storeContext;
-            _storeMappingService = storeMappingService;
-            _workContext = workContext;
-        }
-
-        #endregion
-
         #region Utilities
 
         /// <summary>

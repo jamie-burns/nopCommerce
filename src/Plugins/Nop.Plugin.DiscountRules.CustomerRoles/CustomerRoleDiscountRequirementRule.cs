@@ -14,41 +14,16 @@ using Nop.Services.Plugins;
 
 namespace Nop.Plugin.DiscountRules.CustomerRoles
 {
+    [SlowFox.InjectDependencies(
+        typeof(IActionContextAccessor),
+        typeof(IDiscountService),
+        typeof(ICustomerService),
+        typeof(ILocalizationService),
+        typeof(ISettingService),
+        typeof(IUrlHelperFactory),
+        typeof(IWebHelper))]
     public partial class CustomerRoleDiscountRequirementRule : BasePlugin, IDiscountRequirementRule
     {
-        #region Fields
-
-        private readonly IActionContextAccessor _actionContextAccessor;
-        private readonly ICustomerService _customerService;
-        private readonly IDiscountService _discountService;
-        private readonly ILocalizationService _localizationService;
-        private readonly ISettingService _settingService;
-        private readonly IUrlHelperFactory _urlHelperFactory;
-        private readonly IWebHelper _webHelper;
-
-        #endregion
-
-        #region Ctor
-
-        public CustomerRoleDiscountRequirementRule(IActionContextAccessor actionContextAccessor,
-            IDiscountService discountService,
-            ICustomerService customerService,
-            ILocalizationService localizationService,
-            ISettingService settingService,
-            IUrlHelperFactory urlHelperFactory,
-            IWebHelper webHelper)
-        {
-            _actionContextAccessor = actionContextAccessor;
-            _customerService = customerService;
-            _discountService = discountService;
-            _localizationService = localizationService;
-            _settingService = settingService;
-            _urlHelperFactory = urlHelperFactory;
-            _webHelper = webHelper;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

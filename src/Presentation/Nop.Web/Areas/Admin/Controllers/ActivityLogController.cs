@@ -13,35 +13,14 @@ using Nop.Web.Framework.Mvc;
 
 namespace Nop.Web.Areas.Admin.Controllers
 {
+    [SlowFox.InjectDependencies(
+        typeof(IActivityLogModelFactory), 
+        typeof(ICustomerActivityService), 
+        typeof(ILocalizationService), 
+        typeof(INotificationService), 
+        typeof(IPermissionService))]
     public partial class ActivityLogController : BaseAdminController
     {
-        #region Fields
-
-        private readonly IActivityLogModelFactory _activityLogModelFactory;
-        private readonly ICustomerActivityService _customerActivityService;
-        private readonly ILocalizationService _localizationService;
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
-
-        #endregion
-
-        #region Ctor
-
-        public ActivityLogController(IActivityLogModelFactory activityLogModelFactory,
-            ICustomerActivityService customerActivityService,
-            ILocalizationService localizationService,
-            INotificationService notificationService,
-            IPermissionService permissionService)
-        {
-            _activityLogModelFactory = activityLogModelFactory;
-            _customerActivityService = customerActivityService;
-            _localizationService = localizationService;
-            _notificationService = notificationService;
-            _permissionService = permissionService;
-        }
-
-        #endregion
-
         #region Methods
 
         public virtual async Task<IActionResult> ActivityTypes()

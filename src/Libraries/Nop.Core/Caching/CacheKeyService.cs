@@ -9,6 +9,7 @@ namespace Nop.Core.Caching
     /// <summary>
     /// Represents the default cache key service implementation
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(AppSettings))]
     public abstract partial class CacheKeyService
     {
         #region Constants
@@ -17,21 +18,6 @@ namespace Nop.Core.Caching
         /// Gets an algorithm used to create the hash value of identifiers need to cache
         /// </summary>
         private string HashAlgorithm => "SHA1";
-
-        #endregion
-
-        #region Fields
-
-        protected readonly AppSettings _appSettings;
-
-        #endregion
-
-        #region Ctor
-
-        protected CacheKeyService(AppSettings appSettings)
-        {
-            _appSettings = appSettings;
-        }
 
         #endregion
 

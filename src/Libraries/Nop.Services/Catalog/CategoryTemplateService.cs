@@ -9,23 +9,9 @@ namespace Nop.Services.Catalog
     /// <summary>
     /// Category template service
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(IRepository<CategoryTemplate>))]
     public partial class CategoryTemplateService : ICategoryTemplateService
     {
-        #region Fields
-
-        private readonly IRepository<CategoryTemplate> _categoryTemplateRepository;
-
-        #endregion
-
-        #region Ctor
-
-        public CategoryTemplateService(IRepository<CategoryTemplate> categoryTemplateRepository)
-        {
-            _categoryTemplateRepository = categoryTemplateRepository;
-        }
-
-        #endregion
-
         #region Methods
 
         /// <summary>

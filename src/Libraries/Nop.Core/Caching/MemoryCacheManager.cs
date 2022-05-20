@@ -5,13 +5,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Primitives;
-using Nop.Core.Configuration;
 
 namespace Nop.Core.Caching
 {
     /// <summary>
     /// Represents a memory cache manager 
     /// </summary>
+    [SlowFox.InjectDependencies(typeof(IMemoryCache))]
     public partial class MemoryCacheManager : CacheKeyService, ILocker, IStaticCacheManager
     {
         #region Fields
@@ -19,19 +19,8 @@ namespace Nop.Core.Caching
         // Flag: Has Dispose already been called?
         private bool _disposed;
 
-        private readonly IMemoryCache _memoryCache;
-
         private static readonly ConcurrentDictionary<string, CancellationTokenSource> _prefixes = new();
         private static CancellationTokenSource _clearToken = new();
-
-        #endregion
-
-        #region Ctor
-
-        public MemoryCacheManager(AppSettings appSettings, IMemoryCache memoryCache) : base(appSettings)
-        {
-            _memoryCache = memoryCache;
-        }
 
         #endregion
 
